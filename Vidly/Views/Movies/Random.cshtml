@@ -1,0 +1,28 @@
+﻿@model Vidly.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Random</h2>
+@{
+    var className = Model.customer.Count > 0 ? "popular" : null;
+}
+<h2 class="@className">@Model.movie.Name</h2>
+@*
+    Multi line comment
+*@
+<!-- In this case, TEXT is a Razor specific code. Acts as a Literal-->
+@if (Model.customer.Count == 0)
+{
+    <text>No one has rented this movie before.</text>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.customer)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
